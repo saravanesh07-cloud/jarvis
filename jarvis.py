@@ -98,6 +98,10 @@ def open_app(name):
         subprocess.Popen("explorer.exe", shell=True)
         return "File Explorer"
         
+    if any(k in name for k in ["command prompt", "cmd", "terminal", "powershell"]):
+        subprocess.Popen("start cmd.exe", shell=True)
+        return "Command Prompt"
+
     if "download" in name:
         folder = os.path.join(os.path.expanduser("~"), "Downloads")
         os.startfile(folder)
@@ -126,6 +130,10 @@ def close_app(name):
         "notepad": ["notepad.exe", "Notepad.exe"],
         "calculator": ["CalculatorApp.exe", "calc.exe", "Calculator.exe"],
         "calc": ["CalculatorApp.exe", "calc.exe", "Calculator.exe"],
+        "command prompt": ["cmd.exe"],
+        "cmd": ["cmd.exe"],
+        "terminal": ["WindowsTerminal.exe", "cmd.exe", "powershell.exe"],
+        "powershell": ["powershell.exe"],
     }
     
     # Special handle for File Explorer windows
@@ -194,8 +202,8 @@ def handle(command):
                     speak(f"I couldn't find {target} as a configured application.")
                 return True
 
-    # Direct mention of app (e.g. user just said "whatsapp" or "ai studio")
-    for direct in ["whatsapp", "chrome", "notepad", "calculator", "file explorer", "ai studio", "aistudio", "gemini", "assistant"]:
+    # Direct mention of app (e.g. user just said "whatsapp" or "ai studio" or "command prompt")
+    for direct in ["whatsapp", "chrome", "notepad", "calculator", "file explorer", "command prompt", "cmd", "terminal", "ai studio", "aistudio", "gemini", "assistant"]:
         if command == direct or command == f"open {direct}":
             result = open_app(direct)
             if result:
@@ -254,7 +262,7 @@ def main():
         command = listen()
         if command:
             is_wake_word = any(w in command for w in ["jarvis", "javis", "service", "travis", "harvis", "hey"])
-            is_direct_command = any(k in command for k in ["open", "close", "launch", "start", "screenshot", "time", "cpu", "ram", "search", "youtube", "exit", "quit", "bye", "whatsapp", "chrome", "studio", "assistant", "ai", "gemini"])
+            is_direct_command = any(k in command for k in ["open", "close", "launch", "start", "screenshot", "time", "cpu", "ram", "search", "youtube", "exit", "quit", "bye", "whatsapp", "chrome", "studio", "assistant", "ai", "gemini", "cmd", "terminal", "prompt"])
             if is_wake_word or is_direct_command:
                 if not handle(command):
                     break

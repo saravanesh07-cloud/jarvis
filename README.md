@@ -9,12 +9,12 @@ An intelligent, voice-activated AI assistant for Windows that executes desktop c
 ---
 
 ## ⚡ Features
-- **Voice Recognition**: Powered by Google Speech Recognition with Indian English (en-IN) & US English accent tuning.
-- **Natural Voice Feedback**: Spoken feedback using offline Windows text-to-speech (pyttsx3).
+- **Voice Recognition**: Powered by Google Speech Recognition with Indian English (`en-IN`) & US English accent tuning.
+- **Natural Voice Feedback**: Spoken feedback using offline Windows text-to-speech (`pyttsx3`).
 - **Google AI Studio Integration**: Quick voice launch to custom Google AI Studio apps.
 - **Application Control**:
-  - **Open**: WhatsApp, Google Chrome, VS Code, Notepad, Calculator, File Explorer, Downloads, Desktop.
-  - **Close**: Gracefully close open apps like File Explorer, WhatsApp, Chrome, VS Code, and Notepad.
+  - **Open**: WhatsApp, Google Chrome, VS Code, Notepad, Calculator, File Explorer, Command Prompt (CMD), Terminal, Downloads, Desktop.
+  - **Close**: Gracefully close open apps like File Explorer, WhatsApp, Chrome, VS Code, Notepad, and Command Prompt.
 - **Desktop Actions**:
   - Screenshot capture (auto-saved to Pictures/JARVIS Screenshots).
   - Time announcements.
@@ -31,30 +31,32 @@ An intelligent, voice-activated AI assistant for Windows that executes desktop c
 
 ### Installation
 1. Clone this repository:
-   `ash
+   ```bash
    git clone https://github.com/saravanesh07-cloud/jarvis.git
    cd jarvis
-   `
+   ```
 2. Create and activate a virtual environment:
-   `powershell
+   ```powershell
    python -m venv .venv
    .\.venv\Scripts\activate
-   `
+   ```
 3. Install dependencies:
-   `ash
+   ```bash
    pip install -r requirements.txt
-   `
+   ```
 4. Run JARVIS:
-   `ash
+   ```bash
    python jarvis.py
-   `
-   Or double-click start_jarvis.bat.
+   ```
+   Or double-click `start_jarvis.bat`.
 
 ---
 
 ## 🎙️ Example Voice Commands
 - *"Jarvis, open WhatsApp"*
 - *"Jarvis, open AI Studio"*
+- *"Jarvis, open Command Prompt"* (or *"open CMD"* / *"open Terminal"*)
+- *"Jarvis, close Command Prompt"*
 - *"Jarvis, open File Explorer"*
 - *"Jarvis, close File Explorer"*
 - *"Jarvis, take a screenshot"*
